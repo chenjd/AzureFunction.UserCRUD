@@ -8,7 +8,7 @@ namespace UserCRUD.FuncApp.Services
     {
         Task<User> CreateAsync(User user);
         Task<User> ReadAsync(Guid id);
-        Task<bool> UpdateAsync(Guid id, User user);
+        Task<User> UpdateAsync(Guid id, User user);
         Task<bool> DeleteAsync(Guid id);
     }
 }

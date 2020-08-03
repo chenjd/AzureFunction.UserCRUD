@@ -40,17 +40,17 @@ namespace UserCRUD.FuncApp.Services
             return user;
         }
 
-        public async Task<bool> UpdateAsync(Guid id, User user)
+        public async Task<User> UpdateAsync(Guid id, User user)
         {
             var userToBeUpdated = await ReadAsync(id);
             if(userToBeUpdated == null || user == null)
             {
-                return false;
+                return null;
             }
             userToBeUpdated.Name = user.Name;
             userToBeUpdated.Password = user.Password;
             await _ctx.SaveChangesAsync();
-            return true;
+            return userToBeUpdated;
         }
 
         public async Task<bool> UserExists(string username)
