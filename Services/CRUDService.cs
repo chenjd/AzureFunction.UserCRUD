@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using UserCRUD.FuncApp.Data;
@@ -21,19 +22,35 @@ namespace UserCRUD.FuncApp.Services
             return user;
         }
 
-        public Task<bool> DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(Guid id)
         {
-            throw new System.NotImplementedException();
+            var user = await ReadAsync(id);
+            if(user == null)
+            {
+                return false;
+            }
+            _ctx.Users.Remove(user);
+            await _ctx.SaveChangesAsync();
+            return true;
         }
 
-        public Task<User> ReadAsync(int id)
+        public async Task<User> ReadAsync(Guid id)
         {
-            throw new System.NotImplementedException();
+            var user = await _ctx.Users.FindAsync(id);
+            return user;
         }
 
-        public Task<bool> UpdateAsync(int id, User user)
+        public async Task<bool> UpdateAsync(Guid id, User user)
         {
-            throw new System.NotImplementedException();
+            var userToBeUpdated = await ReadAsync(id);
+            if(userToBeUpdated == null || user == null)
+            {
+                return false;
+            }
+            userToBeUpdated.Name = user.Name;
+            userToBeUpdated.Password = user.Password;
+            await _ctx.SaveChangesAsync();
+            return true;
         }
 
         public async Task<bool> UserExists(string username)
