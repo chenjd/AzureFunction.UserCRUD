@@ -22,10 +22,16 @@ namespace UserCRUD.Function
 
         [FunctionName("create")]
         public async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] [FromBody]User userToCreate,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "create")] HttpRequest req,
             ILogger log)
         {
+            string bodyStr = await new StreamReader(req.Body).ReadToEndAsync();
+            var userToCreate = JsonConvert.DeserializeObject<User>(bodyStr);
             var user = await _service.CreateAsync(userToCreate);
+            if(user == null)
+            {
+                return new BadRequestObjectResult($"username {userToCreate.Name} exists!");
+            }
             var responseMsg = $"user is created, the id is {user.Id}";
             return new OkObjectResult(responseMsg);
         }
