@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using UserCRUD.FuncApp.Data;
@@ -32,6 +33,12 @@ namespace UserCRUD.FuncApp.Services
             _ctx.Users.Remove(user);
             await _ctx.SaveChangesAsync();
             return true;
+        }
+
+        public async Task<List<User>> ListAsync()
+        {
+            var userList = await _ctx.Users.ToListAsync();
+            return userList;
         }
 
         public async Task<User> ReadAsync(Guid id)

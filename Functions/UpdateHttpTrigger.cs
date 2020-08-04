@@ -29,10 +29,6 @@ namespace UserCRUD.Function
             string bodyStr = await new StreamReader(req.Body).ReadToEndAsync();
             var updatedUser = JsonConvert.DeserializeObject<User>(bodyStr);
 
-            if(string.IsNullOrEmpty(id))
-            {
-                return new BadRequestObjectResult($"Error: the input is null!");
-            }
             var user = await _service.UpdateAsync(new Guid(id), updatedUser);
             return new OkObjectResult(user);
         }

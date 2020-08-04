@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UserCRUD.FuncApp.Model;
 
@@ -10,5 +11,6 @@ namespace UserCRUD.FuncApp.Services
         Task<User> ReadAsync(Guid id);
         Task<User> UpdateAsync(Guid id, User user);
         Task<bool> DeleteAsync(Guid id);
+        Task<List<User>> ListAsync();
     }
 }

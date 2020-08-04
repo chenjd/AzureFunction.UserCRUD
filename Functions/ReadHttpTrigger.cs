@@ -23,10 +23,6 @@ namespace UserCRUD.Function
             string id,
             ILogger log)
         {
-            if(string.IsNullOrEmpty(id))
-            {
-                return new BadRequestObjectResult($"Error: the input is null!");
-            }
             var user = await _service.ReadAsync(new Guid(id));
             return new OkObjectResult(user);
         }
