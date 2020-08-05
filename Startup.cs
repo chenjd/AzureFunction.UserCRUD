@@ -18,7 +18,8 @@ namespace UserCRUD.FuncApp
                 Environment.GetEnvironmentVariable("SqlServerConnection");
             builder.Services.AddDbContext<DataContext>(x =>
             {
-                x.UseSqlServer(connectionString);
+                x.UseSqlServer(connectionString
+                , options=>options.EnableRetryOnFailure());
             });
 
             builder.Services.AddTransient<ICRUDService, CRUDService>();
