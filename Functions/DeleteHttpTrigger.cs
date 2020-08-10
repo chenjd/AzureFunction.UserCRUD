@@ -22,7 +22,7 @@ namespace UserCRUD.Function
 
         [FunctionName("delete")]
         public async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "delete/{id}")] HttpRequest req, 
+            [HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = "delete/{id}")] HttpRequest req, 
             string id,
             ILogger log)
         {

@@ -76,7 +76,7 @@ Update a existing user data in the sql database.
 ## Delete a User data
 Delete a user data in the database.
 
-    GET /api/delete/:userid
+    DELETE /api/delete/:userid
     
 
 
