@@ -81,5 +81,6 @@ Delete a user data in the database.
 
 
 ## Blog Post
-
 [Using VS Code To Build An Azure Function And SQL Database App With .Net Core On Azure Cloud](https://levelup.gitconnected.com/using-vs-code-to-build-an-azure-function-and-sql-database-app-with-net-core-on-azure-cloud-9ab42febf9fa) 
+
+[CI/CD For Azure Functions App By Using GitHub And Azure DevOps](https://levelup.gitconnected.com/ci-cd-for-azure-functions-app-by-using-github-and-azure-devops-c6ccfd0decaf)
