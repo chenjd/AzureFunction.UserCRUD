@@ -1,0 +1,9 @@
+// local.settings.json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "AzureWebJobsDashboard": "UseDevelopmentStorage=true",
+    "SqlServerConnection": "Server=DDC-CO-DPARRAGA\Develop;Database=StockSharing;User Id=sa;Password=develop;"
+  }
+}
